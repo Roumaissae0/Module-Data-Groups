@@ -13,7 +13,30 @@ const sum = require("./sum.js");
 // Given an empty array
 // When passed to the sum function
 // Then it should return 0
-test.todo("given an empty array, returns 0")
+
+test("given an empty array, returns 0", () => {
+  expect(sum([])).toBe(0);
+});
+
+test("given an array with one number, returns that number", () => {
+  expect(sum([5])).toBe(5);
+});
+
+test("given an array with negative numbers, returns the correct sum", () => {
+  expect(sum([10, -5, 3])).toBe(8);
+});
+
+test("given an array with decimal numbers, returns the correct sum", () => {
+  expect(sum([1.5, 2.5, 3.0])).toBe(7);
+});
+
+test("given an array with non-number values, ignores them and sums the rest", () => {
+  expect(sum(['hey', 10, 'hi', 60, 10])).toBe(80);
+});
+
+test("given an array with only non-number values, returns 0", () => {
+  expect(sum(['a', 'b', 'c'])).toBe(0);
+});
 
 // Given an array with just one number
 // When passed to the sum function
