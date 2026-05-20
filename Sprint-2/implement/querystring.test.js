@@ -5,8 +5,28 @@
 
 const parseQueryString = require("./querystring.js")
 
+
 test("parses querystring values containing =", () => {
   expect(parseQueryString("equation=x=y+1")).toEqual({
     "equation": "x=y+1",
   });
+});
+
+test("returns empty object for empty string", () => {
+  expect(parseQueryString("")).toEqual({});
+});
+
+test("parses a single key value pair", () => {
+  expect(parseQueryString("name=John")).toEqual({ "name": "John" });
+});
+
+test("parses multiple key value pairs", () => {
+  expect(parseQueryString("name=John&age=30")).toEqual({
+    "name": "John",
+    "age": "30"
+  });
+});
+
+test("parses a key with no value", () => {
+  expect(parseQueryString("name=")).toEqual({ "name": "" });
 });
