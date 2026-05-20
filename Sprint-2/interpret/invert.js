@@ -17,13 +17,14 @@ function invert(obj) {
 }
 
 // a) What is the current return value when invert is called with { a : 1 }
-
+//{ key: 1 }
 // b) What is the current return value when invert is called with { a: 1, b: 2 }
-
+// { key: 2 }
 // c) What is the target return value when invert is called with {a : 1, b: 2}
-
+//{ "1": "a", "2": "b" }
 // c) What does Object.entries return? Why is it needed in this program?
-
+//Object.entries returns an array of key-value pairs like [["a", 1], ["b", 2]]
 // d) Explain why the current return value is different from the target output
-
+//Because invertedObj.key is not using the variable key, it's literally creating a property called "key"
 // e) Fix the implementation of invert (and write tests to prove it's fixed!)
+//We need to change invertedObj.key = value to invertedObj[value] = key so it uses the actual variable values
