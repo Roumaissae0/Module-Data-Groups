@@ -21,3 +21,22 @@ document.getElementById("backward-btn").addEventListener("click", () => {
   currentIndex = (currentIndex - 1 + images.length) % images.length;
   showImage(currentIndex);
 });
+document.getElementById("auto-forward-btn").addEventListener("click", () => {
+  clearInterval(autoInterval);
+  autoInterval = setInterval(() => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  }, 5000);
+});
+
+document.getElementById("auto-backward-btn").addEventListener("click", () => {
+  clearInterval(autoInterval);
+  autoInterval = setInterval(() => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  }, 5000);
+});
+
+document.getElementById("stop-btn").addEventListener("click", () => {
+  clearInterval(autoInterval);
+});
