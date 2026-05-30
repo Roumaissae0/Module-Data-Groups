@@ -129,4 +129,26 @@ describe("toggleCompletedOnTask()", () => {
     expect(todos).toEqual(todosBeforeToggle);
   });
 });
+describe("deleteCompleted()", () => {
+  test("Deletes all completed tasks", () => {
+    const todos = createMockTodos();
+    Todos.deleteCompleted(todos);
+    expect(todos).toHaveLength(2);
+    todos.forEach(todo => expect(todo.completed).toBe(false));
+  });
 
+  test("Does nothing when no tasks are completed", () => {
+    const todos = [
+      { task: "Task 1", completed: false },
+      { task: "Task 2", completed: false },
+    ];
+    Todos.deleteCompleted(todos);
+    expect(todos).toHaveLength(2);
+  });
+
+  test("Does nothing on empty list", () => {
+    const todos = [];
+    Todos.deleteCompleted(todos);
+    expect(todos).toHaveLength(0);
+  });
+});

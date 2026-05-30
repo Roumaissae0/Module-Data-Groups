@@ -7,7 +7,10 @@ const todos = [];
 // Set up tasks to be performed once on page load
 window.addEventListener("load", () => {
   document.getElementById("add-task-btn").addEventListener("click", addNewTodo);
-
+  document.getElementById("delete-completed-btn").addEventListener("click", () => {
+    Todos.deleteCompleted(todos);
+    render();
+  });
   // Populate sample data
   Todos.addTask(todos, "Wash the dishes", false); 
   Todos.addTask(todos, "Do the shopping", true);
@@ -53,6 +56,7 @@ function render() {
 const todoListItemTemplate = 
   document.getElementById("todo-item-template").content.firstElementChild;
 
+  
 // Create a <li> element for the given todo task
 function createListItem(todo, index) {
   const li = todoListItemTemplate.cloneNode(true); // true => Do a deep copy of the node
